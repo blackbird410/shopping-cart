@@ -1,12 +1,14 @@
 import { useState } from 'react'
+import Homepage from './Components/Homepage.jsx'
 import './App.css'
 
 function App() {
 
-  return (
-    <>
-    </>
-  )
+    return (
+        <>
+            <Homepage />
+        </>
+    )
 }
 
 export default App
