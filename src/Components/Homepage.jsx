@@ -1,11 +1,19 @@
 import styles from "../Styles/Homepage.module.css"
 import Header from "./Header";
+import cat1 from "../assets/images/category1-min.jpg"
+import cat2 from "../assets/images/category2-min.jpg"
+import cat3 from "../assets/images/category3-min.jpg"
+import cat4 from "../assets/images/category4-min.jpg"
+import cat5 from "../assets/images/category5-min.jpg"
+import cat6 from "../assets/images/category6-min.jpg"
+import cat7 from "../assets/images/category7-min.jpg"
+import cat8 from "../assets/images/category8-min.jpg"
 
 const Category = ({ name, image }) => {
     return (
-        <div className={styles['clothe-category']}>
-            <img src={image} alt={name} className={styles['clothe-image']}/>
-            <div className={styles['clothe-category-name']}>{name}</div>
+        <div className={styles['clothes-category']}>
+            <img src={image} alt={name} className={styles['clothes-image']}/>
+            <div className={styles['clothes-category-name']}>{name}</div>
         </div>
     );
 }
@@ -25,14 +33,14 @@ const Homepage = () => {
         { name: "shopping", href: "/shop", },
     ];
     const clotheCategories = [
-        { name: "Boys Matching Sets", image: "" },
-        { name: "Girls' Co-ords", image: "" },
-        { name: "Woman's Dresses", image: "" },
-        { name: "Babies Sleepsuits", image: "" },
-        { name: "Women's Skirts", image: "" },
-        { name: "Men's New Arrivals", image: "" },
-        { name: "Kid's Swim", image: "" },
-        { name: "Character Collection", image: "" },
+        { name: "Boys Matching Sets", image: cat1 },
+        { name: "Girls' Co-ords", image: cat2 },
+        { name: "Woman's Dresses", image: cat3 },
+        { name: "Babies Sleepsuits", image: cat4 },
+        { name: "Women's Skirts", image: cat5 },
+        { name: "Men's New Arrivals", image: cat6 },
+        { name: "Kid's Swim", image: cat7 },
+        { name: "Character Collection", image: cat8 },
     ];
 
     return (
@@ -42,9 +50,9 @@ const Homepage = () => {
                 <div className={styles['image-text']}>Take a look at our new products!</div>
                 <div className={styles.btn}>Shop Now</div>
             </div>
-            <div className={styles['clothe-categories']}>
+            <div className={styles['clothes-categories']}>
                 <p className={styles['categories-title']}>Popular Categories</p>
-                <div>
+                <div className={styles['category-list-wrapper']}>
                     {clotheCategories.map( category => 
                         <Category 
                             key={category.name}
