@@ -19,6 +19,8 @@
     background: darkgrey;
     border-radius: 12px;
     padding: 1rem;
+    position: fixed;
+    top: 5%;
 }
 
 .shop-title {
@@ -47,9 +49,10 @@
     margin-left: 0.4rem;
 };
 
-.utility.nav-icon {
+.utility {
+    background: yellow;
     color: red;
-    font-size: 20px;
+    font-size: 1.5rem;
 }
 
 a:hover {

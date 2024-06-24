@@ -1,3 +1,4 @@
+import styles from "../Styles/Homepage.module.css"
 import Header from "./Header";
 
 const Homepage = () => {
@@ -15,9 +16,9 @@ const Homepage = () => {
         { name: "shopping", href: "/shop", },
     ];
     return (
-        <>
+        <div className={styles.main}>
             <Header shopTitle={shopTitle} navLinks={navLinks} utilities={utilities} />
-        </>
+        </div>
     );
 };
 

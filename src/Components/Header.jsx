@@ -11,10 +11,11 @@ const getIconName = (key) => {
 }
 
 const Icon = ({ type, usage, href }) => {
+    {/* FIXME: Apply the style defined in the header modules for the utilities icons */}
     return (type === "navigation") 
         ? (
-            <a className={`utility ${styles['nav-icon']}`} href={href}>
-                <ion-icon name={getIconName(usage)}></ion-icon>
+            <a  href={href}>
+                <ion-icon name={getIconName(usage)} className={styles.utility}></ion-icon>
             </a>
         ) :
             <ion-icon name={getIconName(usage)}></ion-icon>;
