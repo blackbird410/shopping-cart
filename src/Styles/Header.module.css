@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css?family=Sofia');
+
+@font-face {
+  font-family: 'Ananda';
+  src: url('../assets/fonts/AnandaBlack.ttf') format('ttf');
+}
+
+.header,
+.nav-links-wrapper,
+.utilities-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    font-size: 16px;
+}
+
+.header {
+    background: darkgrey;
+    border-radius: 12px;
+    padding: 1rem;
+}
+
+.shop-title {
+    font-size: 24px;
+    background: linear-gradient(90deg, #00d2ff 0%, #3a47d5 100%);
+    font-family: 'Sofia','Ananda', sans-serif;
+    padding: 0.6rem;
+    border-radius: 2rem;
+    cursor: pointer;
+}
+
+.shop-title:hover {
+    background: linear-gradient(90deg, #e3ffe7 0%, #d9e7ff 100%);
+    color: brown;
+}
+
+.nav-link {
+    color: white;
+    padding: 1rem;
+    border-radius: 1rem;
+}
+
+.has-dropdown::after {
+    content: ' ▾';
+    text-align: center;
+    margin-left: 0.4rem;
+};
+
+.utility.nav-icon {
+    color: red;
+    font-size: 20px;
+}
+
+a:hover {
+  color: #535bf2;
+}
+
