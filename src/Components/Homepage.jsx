@@ -18,6 +18,10 @@ const Homepage = () => {
     return (
         <div className={styles.main}>
             <Header shopTitle={shopTitle} navLinks={navLinks} utilities={utilities} />
+            <div className={styles['image-wrapper']}>
+                <div className={styles['image-text']}>Take a look at our products, you won't regret it!</div>
+                <div className={styles.btn}>Shop Now</div>
+            </div>
         </div>
     );
 };
