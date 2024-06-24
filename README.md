@@ -25,3 +25,30 @@ Photo by Rachel Claire: https://www.pexels.com/photo/women-clothes-on-hangers-in
 Photo by Damian Barczak: https://www.pexels.com/photo/portrait-of-a-woman-in-sunglasses-and-black-clothing-12883668/
 
 Photo by Anna Shvets: https://www.pexels.com/photo/a-man-taking-care-of-a-child-11369365/
+
+Photo by salah amrani: https://www.pexels.com/photo/man-wearing-blue-lacoste-polo-shirt-and-silver-colored-analog-watch-1232459/
+
+Photo by Jeffrey Reed: https://www.pexels.com/photo/man-wearing-plaid-dress-shirt-and-black-pants-769732/
+
+Photo by Gabriela Pereira: https://www.pexels.com/photo/photo-of-man-standing-near-flowers-2635315/
+
+Photo by Terje Sollie: https://www.pexels.com/photo/pair-of-brown-leather-casual-shoes-on-table-298863/
+
+Photo by Willo M.: https://www.pexels.com/photo/shallow-focus-photo-of-clothing-rack-3768005/
+
+Photo by Francesco Paggiaro: https://www.pexels.com/photo/assorted-t-shirts-2294342/
+
+Photo by David Bartus: https://www.pexels.com/photo/selective-focus-photography-white-button-up-collared-top-297933/
+
+Photo by cottonbro studio: https://www.pexels.com/photo/woman-in-denim-clothes-near-a-clothing-rack-6770450/
+
+Photo by Александр Слесарев: https://www.pexels.com/photo/woman-in-stylish-clothes-posing-near-wall-15932407/
+
+Photo by MART  PRODUCTION: https://www.pexels.com/photo/woman-in-white-crew-neck-t-shirt-9558752/
+
+Photo by cottonbro studio: https://www.pexels.com/photo/photo-of-woman-wearing-white-sweater-4620612/
+
+Photo by Chloe Amaya: https://www.pexels.com/photo/white-and-blue-textiles-2252000/
+
+Photo by Kawê  Rodrigues: https://www.pexels.com/photo/baby-shoes-close-up-15844907/
+

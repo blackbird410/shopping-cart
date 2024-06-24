@@ -5,6 +5,7 @@ const getIconName = (key) => {
         search: "search",
         profile: "person",
         shopping: "cart",
+        checkout: "bag-check",
     };
 
     return names[key];

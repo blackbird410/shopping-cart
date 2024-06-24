@@ -76,6 +76,10 @@
     background-position: center;
 }
 
+.canva:hover {
+    opacity: 0.6;
+}
+
 .canva-title {
     background: black;
     font-size: 1.5 rem;

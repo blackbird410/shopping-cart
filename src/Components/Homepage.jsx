@@ -43,6 +43,7 @@ const Homepage = () => {
         { name: "search", href: "/errorPage", },
         { name: "profile", href: "/errorPage", },
         { name: "shopping", href: "/shop", },
+        { name: "checkout", href: "/shop", },
     ];
     const clotheCategories = [
         { name: "Boys Matching Sets", image: cat1 },
