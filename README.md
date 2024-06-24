@@ -19,3 +19,9 @@
 <a href="https://www.freepik.com/free-photo/full-shot-kids-posing-together_33625875.htm#fromView=search&page=1&position=1&uuid=b779cf02-e5f9-4dfc-ba01-07b4c0f4af47">Image by freepik</a>
 
 <a href="https://www.freepik.com/free-photo/enthusiastic-red-haired-girl-dancing-vintage-straw-hat-gray-wall-indoor-photo-glad-curly-lady-yellow-outfit_11577140.htm#fromView=search&page=1&position=8&uuid=b9be9e9f-78dd-4040-90c5-7d5e3c00b55f">Image by lookstudio on Freepik</a>
+
+Photo by Rachel Claire: https://www.pexels.com/photo/women-clothes-on-hangers-in-shop-5531540/
+
+Photo by Damian Barczak: https://www.pexels.com/photo/portrait-of-a-woman-in-sunglasses-and-black-clothing-12883668/
+
+Photo by Anna Shvets: https://www.pexels.com/photo/a-man-taking-care-of-a-child-11369365/

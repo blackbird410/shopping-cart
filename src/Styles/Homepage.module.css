@@ -3,14 +3,16 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin-top: 5%;
+    align-items: center;
+    margin-top: 8%;
+    gap: 1rem;
 }
 
 .image-wrapper {
     background: url("../assets/images/clothes-clothing-store.jpg");
     background-size: cover;
     background-repeat: no-repeat;
-    width: 100vw;
+    min-width: 100%;
     height: max(400px, 50vh);
     
     display: flex;
@@ -55,4 +57,33 @@
     max-height: 200px;
     width: auto;
     border-radius: 50%;
+}
+
+.clothes-category-name {
+    text-align: center;
+    font-weight: bold;
+}
+
+.canvas {
+    display: grid;
+    grid-template-rows: repeat(2, minmax(300px, 1fr));
+    grid-template-columns: repeat(3, 300px);
+}
+
+.canva {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.canva-title {
+    background: black;
+    font-size: 1.5 rem;
+    font-weight: bold;
+    padding: 1rem;
+    border-right: solid 2px lightgray;
+}
+
+#airport-outfit {
+    grid-area: 1 / 1 / span 1 / span 3;
 }
