@@ -1,9 +1,9 @@
 
 .main {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
-    margin-top: max(16px, 5%);
+    margin-top: 5%;
 }
 
 .image-wrapper {
@@ -11,7 +11,7 @@
     background-size: cover;
     background-repeat: no-repeat;
     width: 100vw;
-    height: 40vh;
+    height: max(400px, 50vh);
     
     display: flex;
     flex-direction: column;
@@ -23,7 +23,7 @@
 .image-text {
     font-size: 2rem;
     color: black;
-    background-color: lightgray;
+    background-color: darkgray;
     opacity: .8;
     padding: 1rem;
 }
