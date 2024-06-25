@@ -1,4 +1,5 @@
 import styles from "../Styles/Homepage.module.css"
+import { Link } from "react-router-dom";
 import Header from "./Header";
 import cat1 from "../assets/images/category1-min.jpg"
 import cat2 from "../assets/images/category2-min.jpg"
@@ -31,20 +32,6 @@ const Canva = ({ title, image, id }) => {
 }
 
 const Homepage = () => {
-    const shopTitle = "Arcane";
-    const navLinks = [
-        { label: "Shop", href: "/shop", after: false, },
-        { label: "About Us", href: "/errorPage", after: true, },
-        { label: "Our Services", href: "/errorPage", after: false, },
-        { label: "Store Locator", href: "/errorPage", after: false, },
-        { label: "Your Impact", href: "", after: true, },
-    ];
-    const utilities = [
-        { name: "search", href: "/errorPage", },
-        { name: "profile", href: "/errorPage", },
-        { name: "shopping", href: "/shop", },
-        { name: "checkout", href: "/shop", },
-    ];
     const clotheCategories = [
         { name: "Boys Matching Sets", image: cat1 },
         { name: "Girls' Co-ords", image: cat2 },
@@ -63,10 +50,10 @@ const Homepage = () => {
 
     return (
         <div className={styles.main}>
-            <Header shopTitle={shopTitle} navLinks={navLinks} utilities={utilities} />
+            <Header />
             <div className={styles['image-wrapper']}>
                 <div className={styles['image-text']}>Take a look at our new products!</div>
-                <div className={styles.btn}>Shop Now</div>
+                <Link to={"/shop"} className={styles.btn}>Shop Now</Link>
             </div>
             <div className={styles['clothes-categories']}>
                 <p className={styles['categories-title']}>Popular Categories</p>
