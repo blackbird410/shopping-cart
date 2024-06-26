@@ -1,10 +1,10 @@
 import { useState } from "react";
 import Header from "./Header"
-import { populateCart } from "./ShopPage.jsx"
+import { populateStorage } from "./ShopPage.jsx"
 import styles from "../Styles/Cart.module.css"
 import { Link } from "react-router-dom";
 
-const CartItem = ({ title, image, nItem, totalPrice, handleEdit, handleChange }) => {
+export const CartItem = ({ title, image, nItem, totalPrice, handleEdit, handleChange }) => {
     // FIXME: Each item should not have their own checkout btn
     // Instead, each should have a selected checkbox for checkout that will be 
     // used for checking out the selected items 
@@ -32,7 +32,7 @@ const CartItem = ({ title, image, nItem, totalPrice, handleEdit, handleChange })
 }
 
 const Cart = () => {
-    const [ cartItems, setCartItems ] = useState(populateCart())
+    const [ cartItems, setCartItems ] = useState(populateStorage("cartItems"))
     const [ checkedItems, setCheckedItems ] = useState([]);
 
     const handleChange = (e) => {
@@ -90,10 +90,11 @@ const Cart = () => {
             <Header />
             {cartItems.length ? 
                 <div className={styles['item-list']}>
-                    <button 
+                    <Link 
+                        to={"/checkout"}
                         className={`${styles['checkout-btn']}`} 
                         onClick={handleCheckout}>Checkout
-                    </button>
+                    </Link>
                     {cartItems.map(
                         item => 
                             <CartItem 

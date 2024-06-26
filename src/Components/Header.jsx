@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import styles from '../Styles/Header.module.css'
-import { populateCart } from './ShopPage';
+import { populateStorage } from './ShopPage';
 
 const getIconName = (key) => {
     const names = {
@@ -55,10 +55,10 @@ const Header = () => {
         { name: "search", href: "/", },
         { name: "profile", href: "/", },
         { name: "shopping", href: "/cart", },
-        { name: "checkout", href: "/cart", },
+        { name: "checkout", href: "/checkout", },
     ];
 
-    const cartItems = populateCart();
+    const cartItems = populateStorage("cartItems");
 
     return (
         <div className={styles.header}>

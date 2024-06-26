@@ -6,6 +6,7 @@ import ShopPage from './Components/ShopPage.jsx';
 import Homepage from './Components/Homepage.jsx';
 import ErrorPage from './Components/ErrorPage.jsx';
 import Cart from './Components/Cart.jsx';
+import Checkout from './Components/Checkout.jsx';
 
 const router = createBrowserRouter([
     { 
@@ -26,6 +27,11 @@ const router = createBrowserRouter([
     {
         path: "/cart",
         element: <Cart />,
+        errorElement: <ErrorPage />,
+    },
+    {
+        path: "/checkout",
+        element: <Checkout />,
         errorElement: <ErrorPage />,
     },
 ]);

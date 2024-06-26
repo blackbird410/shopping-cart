@@ -52,6 +52,9 @@
 }
 
 .checkout-btn {
+    padding: 0.6rem 1rem;
+    border-radius: 1rem;
+
     background: var(--third-color);
     position: fixed;
     right: 10%;

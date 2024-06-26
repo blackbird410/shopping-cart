@@ -1,0 +1,12 @@
+
+.main {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+}
+
+.bill-amount::before {
+    content: "Total: $";
+}

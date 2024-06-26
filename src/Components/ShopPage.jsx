@@ -74,15 +74,15 @@ const Item = ({
 }
 
 export const toNumber = (v) => (v * 10) / 10;
-export const populateCart = () => {
-    const cartContent = JSON.parse(localStorage.getItem("cartItems"));
-    return (cartContent) ?  cartContent : [];
+export const populateStorage = (key) => {
+    const items = JSON.parse(localStorage.getItem(key));
+    return (items) ?  items : [];
 }
 
 const ShopPage = () => {
   //  localStorage.setItem("cartItems", JSON.stringify([]));   // Could be used to empty the cart
     const { items, error, loading } = fetchItems();
-    const [ cartItems, setCartItems ] = useState(populateCart());
+    const [ cartItems, setCartItems ] = useState(populateStorage("cartItems"));
     const shopName = "Arcane";
 
     const handleAdd = async (e) => {
