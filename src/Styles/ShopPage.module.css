@@ -25,18 +25,18 @@
 
 .item-wrapper {
     flex-basis: 250px;
-    height: 300px;
+    height: 400px;
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
 
     display: grid;
-    grid-template-rows: repeat(12, 1fr);
+    grid-template-rows: repeat(16, 1fr);
     align-items: center;
 }
 
 .shop-name {
-    grid-area: 1 / 1 / span 10 / 1;
+    grid-area: 1 / 1 / span 16 / 1;
     align-self: baseline;
     padding: 0.5rem;
 
@@ -61,6 +61,36 @@
 
 .item-price::before {
     content: "$ ";
+}
+
+.input-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+}
+
+.item-input {
+    display: grid;
+    align-items: center;
+    border: 1px solid darkgray;
+    padding-left: 0.5rem;
+}
+
+.item-input:hover {
+    border-color: var(--third-color);
+}
+
+.input-counter {
+    display: flex;
+}
+
+.input-btn,
+.add-btn {
+    border-radius: 0;
+}
+
+.input-btn:hover, 
+.add-btn:hover {
+    background: var(--third-color);
 }
 
 .loading-container {
