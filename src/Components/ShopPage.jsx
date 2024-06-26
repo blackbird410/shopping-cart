@@ -1,4 +1,3 @@
-import { json } from "react-router-dom";
 import styles from "../Styles/ShopPage.module.css";
 import Header from "./Header";
 import { useState, useEffect } from "react";
@@ -74,14 +73,16 @@ const Item = ({
     );
 }
 
-const toNumber = (v) => (v * 10) / 10;
+export const toNumber = (v) => (v * 10) / 10;
+export const populateCart = () => {
+    const cartContent = JSON.parse(localStorage.getItem("cartItems"));
+    return (cartContent) ?  cartContent : [];
+}
 
 const ShopPage = () => {
+    // localStorage.setItem("cartItems", JSON.stringify([]));
     const { items, error, loading } = fetchItems();
-    // Populate the cart with past added items
-    const cartContent = JSON.parse(localStorage.getItem("cartItems"));
-    if (!cartContent) cartContent = [];
-    const [ cartItems, setCartItems ] = useState(cartContent);
+    const [ cartItems, setCartItems ] = useState(populateCart());
     const shopName = "Arcane";
 
     const handleAdd = (e) => {
@@ -89,6 +90,7 @@ const ShopPage = () => {
         const itemTitle = e.target.parentNode.childNodes[1].textContent;
         const itemPrice = toNumber(e.target.parentNode.childNodes[2].textContent);
         const numberOfItem = e.target.parentNode.childNodes[3].childNodes[0].value;
+        const imgUrl = e.target.parentNode.style.backgroundImage.split("(")[1].slice(1, -2);
 
         if (numberOfItem > 0) {
             // Check if the item was already in the cart 
@@ -105,19 +107,19 @@ const ShopPage = () => {
                 temp = [...temp, 
                     { 
                         title: itemTitle,  
+                        image: imgUrl,
                         nItem: toNumber(numberOfItem), 
                         totalPrice: numberOfItem * itemPrice, 
                     }
                 ];
             }
             setCartItems(temp);
-
             localStorage.setItem("cartItems", JSON.stringify(cartItems));
         };
     }
 
     const handleEdit = (e) => {
-        let currentValue = ((e.target.parentNode.parentNode.childNodes[0].value)*10) / 10;
+        let currentValue = toNumber(e.target.parentNode.parentNode.childNodes[0].value);
 
         e.target.parentNode.parentNode.childNodes[0].value = 
             ( e.target.textContent === "-" ) 

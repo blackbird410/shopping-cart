@@ -1,0 +1,77 @@
+import { useState } from "react";
+import Header from "./Header"
+import { populateCart, toNumber } from "./ShopPage.jsx"
+import styles from "../Styles/Cart.module.css"
+import { Link } from "react-router-dom";
+
+const CartItem = ({ title, image, nItem, totalPrice, handleCheckout, handleEdit }) => {
+    return (
+        <div className={styles['cart-item']}>
+            <img className={`${styles['image']}`} src={image} alt={title} />
+            <div className={`${styles['title']}`}>{title}</div>
+            <div className={`${styles['count']}`}>{nItem}</div>
+            <div className={`${styles['total-price']}`}>{totalPrice}</div>
+            <div className={`${styles['btn-wrapper']}`}>
+                <button className={`${styles['cart-btn']} ${styles['decrement-btn']}`} onClick={handleEdit}>-</button>
+                <button className={`${styles['cart-btn']} ${styles['increment-btn']}`} onClick={handleEdit}>+</button>
+            </div>
+            <button 
+                className={`${styles['cart-btn']} ${styles['checkout-btn']}`} 
+                onClick={handleCheckout}>Checkout</button>
+        </div>
+    );
+}
+
+const Cart = () => {
+    const [ cartItems, setCartItems ] = useState(populateCart())
+    const handleCheckout = () => {
+        alert("Functionality not available!");
+    }
+
+    const handleEdit = (e) => {
+        let currentItemTitle = toNumber(e.target.parentNode.parentNode.childNodes[1].textContent);
+
+        // Find the Item and update the value accordingly
+        let temp = [];
+        cartItems.forEach(item => { 
+            temp = [...temp, 
+                (item.title === currentItemTitle) 
+                    ? {
+                        ...item, 
+                        nItem: (( e.target.textContent === "-" ) 
+                            ? ( item.nItem - (!!(item.nItem)) ) 
+                            : item.nItem + 1)
+                    }
+                    : item 
+            ]
+        });
+
+        setCartItems(temp);
+        localStorage.setItem("cartItems", JSON.stringify(temp)); 
+    }
+
+
+    
+    return (
+        <div className={styles['main']}>
+            <Header />
+            {cartItems.length ? 
+                <div className={styles['item-list']}>
+                    {cartItems.map(
+                        item => 
+                            <CartItem 
+                                key={item.title}
+                                title={item.title}
+                                image={item.image}
+                                nItem={item.nItem}
+                                totalPrice={item.totalPrice}
+                                handleCheckout={handleCheckout}
+                                handleEdit={handleEdit}
+                            />)}
+                </div> : <Link to={'/shop'}>No items in the cart. Go Shop now!</Link>
+            }
+        </div>
+    );
+}
+
+export default Cart;

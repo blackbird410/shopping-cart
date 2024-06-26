@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import styles from '../Styles/Header.module.css'
+import { populateCart } from './ShopPage';
 
 const getIconName = (key) => {
     const names = {
@@ -45,19 +46,19 @@ const Header = () => {
     const shopTitle = "Arcane";
     const navLinks = [
         { label: "Shop", href: "/shop", after: false, },
-        { label: "About Us", href: "/errorPage", after: true, },
-        { label: "Our Services", href: "/errorPage", after: false, },
-        { label: "Store Locator", href: "/errorPage", after: false, },
-        { label: "Your Impact", href: "", after: true, },
+        { label: "About Us", href: "/", after: true, },
+        { label: "Our Services", href: "/", after: false, },
+        { label: "Store Locator", href: "/", after: false, },
+        { label: "Your Impact", href: "/", after: true, },
     ];
     const utilities = [
-        { name: "search", href: "/errorPage", },
-        { name: "profile", href: "/errorPage", },
-        { name: "shopping", href: "/shop", },
-        { name: "checkout", href: "/shop", },
+        { name: "search", href: "/", },
+        { name: "profile", href: "/", },
+        { name: "shopping", href: "/cart", },
+        { name: "checkout", href: "/cart", },
     ];
 
-    const cartItems = JSON.parse(localStorage.getItem("cartItems"));
+    const cartItems = populateCart();
 
     return (
         <div className={styles.header}>
