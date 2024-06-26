@@ -49,7 +49,7 @@ const Homepage = () => {
     ];
 
     return (
-        <div className={styles.main}>
+        <div className={styles['main']}>
             <Header />
             <div className={styles['image-wrapper']}>
                 <div className={styles['image-text']}>Take a look at our new products!</div>
