@@ -8,9 +8,6 @@ const Checkout = () => {
     const [ checkoutItems, setCheckoutItems ] = useState(populateStorage("checkoutItems"));
     const [ total, setTotal ] = useState(0);
 
-    // FIXME: Both the cartItems and checkoutItems lists need to be updated when the user make a 
-    // change on the checkout page
-
     const handleEdit = (e) => {
         let currentItemTitle = e.target.parentNode.parentNode.childNodes[1].textContent;
 
@@ -28,7 +25,7 @@ const Checkout = () => {
                         {
                             ...item, 
                             nItem: updateCount,
-                            totalPrice: item.price * updateCount, 
+                            totalPrice: (item.price * updateCount).toFixed(2), 
                         }
                     ];
                 }
@@ -39,12 +36,16 @@ const Checkout = () => {
         setCheckoutItems(temp);
         localStorage.setItem("checkoutItems", JSON.stringify(temp));
     }
+    
+    const handleCheckout = () => {
+        alert("Checkout feature unavailable for the moment!\nThanks for trying our app :)");
+    }
 
 
     useEffect(() => {
         let currentTotal = 0;
         checkoutItems.forEach(item => currentTotal += toNumber(item.totalPrice));
-        setTotal(currentTotal);
+        setTotal(currentTotal.toFixed(2));
     }, [checkoutItems]);
 
     return (
@@ -63,6 +64,7 @@ const Checkout = () => {
             </div>
             <div className={styles['summary-info']}>
                 <p className={styles['bill-amount']}>{total}</p>
+                <button className={styles['pay-btn']} onClick={handleCheckout}>Checkout & Pay </button>
             </div>
         </div>
     );

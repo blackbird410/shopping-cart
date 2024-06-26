@@ -5,12 +5,6 @@ import styles from "../Styles/Cart.module.css"
 import { Link } from "react-router-dom";
 
 export const CartItem = ({ title, image, nItem, totalPrice, handleEdit, handleChange }) => {
-    // FIXME: Each item should not have their own checkout btn
-    // Instead, each should have a selected checkbox for checkout that will be 
-    // used for checking out the selected items 
-    // Only one checkout btn should be on the cart page
-    // The total of the checkout page should reflect the total of the selected items
-
     return (
         <div className={styles['cart-item']}>
             <img className={`${styles['image']}`} src={image} alt={title} />

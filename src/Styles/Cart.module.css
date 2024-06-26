@@ -21,6 +21,7 @@
 
 .title {
     grid-area: title;
+    color: var(--third-color);
 }
 
 .count {
@@ -56,7 +57,7 @@
 
     background: var(--third-color);
     position: fixed;
-    right: 10%;
+    right: 8%;
     z-index: 3;
 }
 .checkout-btn:hover {
@@ -77,4 +78,6 @@
     border-radius: 1rem;
 
     background: gray;
+    font-size: 1.2rem;
+    font-weight: bold;
 }
