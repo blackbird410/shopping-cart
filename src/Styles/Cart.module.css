@@ -47,10 +47,15 @@
     width: 100%;
 }
 
+.item-checkbox {
+    grid-area: item-checkbox;    
+}
+
 .checkout-btn {
-    grid-area: checkout-btn;
-    column-span: all;
     background: var(--third-color);
+    position: fixed;
+    right: 10%;
+    z-index: 3;
 }
 .checkout-btn:hover {
     background: green;
@@ -58,11 +63,11 @@
 
 .cart-item {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+    grid-template-columns: 1.5rem repeat(auto-fit, minmax(50px, 1fr));
     grid-template-rows: repeat(2, 1fr);
     grid-template-areas: 
-        "image title count edit-btns checkout-btn"
-        "image title total-price edit-btns checkout-btn";
+        "item-checkbox image title count edit-btns"
+        "item-checkbox image title total-price edit-btns";
     align-items: center;
     justify-items: center;
     padding: 1rem;

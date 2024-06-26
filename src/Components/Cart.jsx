@@ -1,10 +1,10 @@
 import { useState } from "react";
 import Header from "./Header"
-import { populateCart, toNumber } from "./ShopPage.jsx"
+import { populateCart } from "./ShopPage.jsx"
 import styles from "../Styles/Cart.module.css"
 import { Link } from "react-router-dom";
 
-const CartItem = ({ title, image, nItem, totalPrice, handleCheckout, handleEdit }) => {
+const CartItem = ({ title, image, nItem, totalPrice, handleEdit, handleChange }) => {
     // FIXME: Each item should not have their own checkout btn
     // Instead, each should have a selected checkbox for checkout that will be 
     // used for checking out the selected items 
@@ -21,17 +21,37 @@ const CartItem = ({ title, image, nItem, totalPrice, handleCheckout, handleEdit 
                 <button className={`${styles['cart-btn']} ${styles['decrement-btn']}`} onClick={handleEdit}>-</button>
                 <button className={`${styles['cart-btn']} ${styles['increment-btn']}`} onClick={handleEdit}>+</button>
             </div>
-            <button 
-                className={`${styles['cart-btn']} ${styles['checkout-btn']}`} 
-                onClick={handleCheckout}>Checkout</button>
+            <input 
+                type="checkbox" 
+                className={`${styles['item-checkbox']}`} 
+                id={title}
+                onClick={handleChange}
+            />
         </div>
     );
 }
 
 const Cart = () => {
     const [ cartItems, setCartItems ] = useState(populateCart())
+    const [ checkedItems, setCheckedItems ] = useState([]);
+
+    const handleChange = (e) => {
+        // Add the items that are checked to the checked list
+        const itemTitle = e.target.parentNode.childNodes[1].textContent;
+        if (e.target.checked) {
+            // Add the items to the list
+            const target = cartItems.find(item => item.title === itemTitle)
+            setCheckedItems([...checkedItems, target]);
+
+        } else {
+            // Remove it from the list
+            setCheckedItems(checkedItems.filter(item => item.title !== itemTitle));
+        }
+    }
+
     const handleCheckout = () => {
-        alert("Functionality not available!");
+        // Get the selected items and save them in the local storage
+        localStorage.setItem("checkoutItems", JSON.stringify(checkedItems));
     }
 
     const handleEdit = (e) => {
@@ -70,6 +90,10 @@ const Cart = () => {
             <Header />
             {cartItems.length ? 
                 <div className={styles['item-list']}>
+                    <button 
+                        className={`${styles['checkout-btn']}`} 
+                        onClick={handleCheckout}>Checkout
+                    </button>
                     {cartItems.map(
                         item => 
                             <CartItem 
@@ -78,8 +102,8 @@ const Cart = () => {
                                 image={item.image}
                                 nItem={item.nItem}
                                 totalPrice={item.totalPrice}
-                                handleCheckout={handleCheckout}
                                 handleEdit={handleEdit}
+                                handleChange={handleChange}
                             />)}
                 </div> : <Link to={'/shop'}>No items in the cart. Go Shop now!</Link>
             }
