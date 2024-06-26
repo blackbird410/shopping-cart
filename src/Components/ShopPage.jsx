@@ -1,3 +1,4 @@
+import { json } from "react-router-dom";
 import styles from "../Styles/ShopPage.module.css";
 import Header from "./Header";
 import { useState, useEffect } from "react";
@@ -59,9 +60,9 @@ const Item = ({
                 <input 
                     type="text" 
                     pattern="[0-9]{5}"
-                    id="item-input" 
+                    id={`${name}item-input`} 
                     className={styles['item-input']}
-                    name="item-input"
+                    name={`${name}item-input`} 
                     defaultValue="1"
                 />
                 <ItemCounter 
@@ -77,13 +78,10 @@ const toNumber = (v) => (v * 10) / 10;
 
 const ShopPage = () => {
     const { items, error, loading } = fetchItems();
-    const [ cartItems, setCartItems ] = useState([
-        {
-            title: "",
-            nItem: 0,
-            totalPrice: ""
-        },
-    ]);
+    // Populate the cart with past added items
+    const cartContent = JSON.parse(localStorage.getItem("cartItems"));
+    if (!cartContent) cartContent = [];
+    const [ cartItems, setCartItems ] = useState(cartContent);
     const shopName = "Arcane";
 
     const handleAdd = (e) => {
@@ -93,7 +91,7 @@ const ShopPage = () => {
         const numberOfItem = e.target.parentNode.childNodes[3].childNodes[0].value;
 
         if (numberOfItem > 0) {
-            // Check in the item was already in the cart 
+            // Check if the item was already in the cart 
             let temp = [...cartItems];
             let index = temp.findIndex( item => item.title === itemTitle ); 
 
