@@ -12,12 +12,20 @@ const getIconName = (key) => {
     return names[key];
 }
 
-const Icon = ({ type, usage, href }) => {
+const Icon = ({ type, usage, href, counter }) => {
     return (type === "navigation") 
         ? (
-            <Link  to={href} className={`${styles.utility}`}>
-                <ion-icon name={getIconName(usage)} ></ion-icon>
-            </Link>
+            (usage === "shopping") 
+                ? (
+                    <Link  to={href} className={`${styles.utility}`}>
+                        <div id='cart-counter'>{counter}</div>
+                        <ion-icon name={getIconName(usage)} ></ion-icon>
+                    </Link>
+                ) : (
+                    <Link  to={href} className={`${styles.utility}`}>
+                        <ion-icon name={getIconName(usage)} ></ion-icon>
+                    </Link>
+                )
         ) :
             <ion-icon name={getIconName(usage)}></ion-icon>;
 }
@@ -49,6 +57,8 @@ const Header = () => {
         { name: "checkout", href: "/shop", },
     ];
 
+    const cartItems = JSON.parse(localStorage.getItem("cartItems"));
+
     return (
         <div className={styles.header}>
             <Link to={"/"} className={styles['shop-title']}>{shopTitle}</Link>
@@ -61,12 +71,16 @@ const Header = () => {
                         after={navLink.after} 
                     />)}
             </div>
-            <div id="utilities" className={styles['utilities-wrapper']}>{utilities.map( utility => 
-                <Icon 
-                    key={utility.name}
-                    type="navigation" 
-                    usage={utility.name} 
-                    href={utility.href} 
+            <div 
+                id="utilities" 
+                className={styles['utilities-wrapper']}
+            >{utilities.map( utility => 
+                    <Icon 
+                        key={utility.name}
+                        type="navigation" 
+                        usage={utility.name} 
+                        href={utility.href}
+                        counter={utility.name === 'shopping' && cartItems.length }
                 />)}
             </div>
         </div>

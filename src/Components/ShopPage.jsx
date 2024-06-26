@@ -73,32 +73,49 @@ const Item = ({
     );
 }
 
+const toNumber = (v) => (v * 10) / 10;
+
 const ShopPage = () => {
     const { items, error, loading } = fetchItems();
     const [ cartItems, setCartItems ] = useState([
         {
             title: "",
-            nItem: "",
+            nItem: 0,
             totalPrice: ""
         },
     ]);
     const shopName = "Arcane";
 
     const handleAdd = (e) => {
-        // Get the number of items selected and add this item and and the corresponding number to the cart 
+        // Get the number of items selected and add the corresponding number to the cart 
         const itemTitle = e.target.parentNode.childNodes[1].textContent;
-        const itemPrice = (e.target.parentNode.childNodes[2].textContent * 10) / 10;
-        const nItem = e.target.parentNode.childNodes[3].childNodes[0].value;
+        const itemPrice = toNumber(e.target.parentNode.childNodes[2].textContent);
+        const numberOfItem = e.target.parentNode.childNodes[3].childNodes[0].value;
 
-        setCartItems([...cartItems, 
-            { 
-                title: itemTitle,  
-                nItem: nItem, 
-                totalPrice: nItem * itemPrice, 
+        if (numberOfItem > 0) {
+            // Check in the item was already in the cart 
+            let temp = [...cartItems];
+            let index = temp.findIndex( item => item.title === itemTitle ); 
+
+            if (index >= 0) {
+                temp[index] = { 
+                    ...temp[index], 
+                    nItem: toNumber(temp[index].nItem) + toNumber(numberOfItem),
+                    totalPrice: (temp[index].nItem + numberOfItem) * itemPrice,
+                }
+            } else { 
+                temp = [...temp, 
+                    { 
+                        title: itemTitle,  
+                        nItem: toNumber(numberOfItem), 
+                        totalPrice: numberOfItem * itemPrice, 
+                    }
+                ];
             }
-        ]);
+            setCartItems(temp);
 
-        console.table(cartItems);
+            localStorage.setItem("cartItems", JSON.stringify(cartItems));
+        };
     }
 
     const handleEdit = (e) => {

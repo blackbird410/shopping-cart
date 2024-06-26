@@ -15,6 +15,20 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
+
+#cart-counter {
+    font-size: 12px;
+    background: #ff0000;
+    color: #fff;
+    padding: 0 5px;
+    vertical-align: top;
+    border-radius: 50%;
+    margin-bottom: -16px;
+    margin-left: 18px;
+    position: relative;
+    z-index: 3;
+}
+
 ion-icon {
     font-size: 20px;
 }
