@@ -24,6 +24,16 @@
     text-align: center;
 }
 
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 10vh; 
+    height: 100%;
+    width: 100%;
+    gap: 1rem;
+}
+
 #cart-counter {
     font-size: 12px;
     background: #ff0000;
