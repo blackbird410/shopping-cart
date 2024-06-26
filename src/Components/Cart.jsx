@@ -29,21 +29,28 @@ const Cart = () => {
     }
 
     const handleEdit = (e) => {
-        let currentItemTitle = toNumber(e.target.parentNode.parentNode.childNodes[1].textContent);
+        let currentItemTitle = e.target.parentNode.parentNode.childNodes[1].textContent;
 
         // Find the Item and update the value accordingly
         let temp = [];
         cartItems.forEach(item => { 
-            temp = [...temp, 
-                (item.title === currentItemTitle) 
-                    ? {
-                        ...item, 
-                        nItem: (( e.target.textContent === "-" ) 
-                            ? ( item.nItem - (!!(item.nItem)) ) 
-                            : item.nItem + 1)
-                    }
-                    : item 
-            ]
+            if (item.title === currentItemTitle) {
+                let updateCount = (e.target.textContent === "-"
+                    ? ( item.nItem - !!(item.nItem)) 
+                    : item.nItem + 1);
+
+                if (updateCount > 0) {
+                    temp = [
+                        ...temp, 
+                        {
+                            ...item, 
+                            nItem: updateCount,
+                            totalPrice: item.price * updateCount, 
+                        }
+                    ];
+                }
+
+            } else temp = [...temp, item];
         });
 
         setCartItems(temp);

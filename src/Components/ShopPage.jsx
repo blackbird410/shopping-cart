@@ -80,7 +80,7 @@ export const populateCart = () => {
 }
 
 const ShopPage = () => {
-    // localStorage.setItem("cartItems", JSON.stringify([]));
+    //localStorage.setItem("cartItems", JSON.stringify([]));
     const { items, error, loading } = fetchItems();
     const [ cartItems, setCartItems ] = useState(populateCart());
     const shopName = "Arcane";
@@ -108,6 +108,7 @@ const ShopPage = () => {
                     { 
                         title: itemTitle,  
                         image: imgUrl,
+                        price: itemPrice, 
                         nItem: toNumber(numberOfItem), 
                         totalPrice: numberOfItem * itemPrice, 
                     }
@@ -115,6 +116,7 @@ const ShopPage = () => {
             }
             setCartItems(temp);
             localStorage.setItem("cartItems", JSON.stringify(cartItems));
+            console.table(cartItems);
         };
     }
 
