@@ -80,12 +80,12 @@ export const populateCart = () => {
 }
 
 const ShopPage = () => {
-    //localStorage.setItem("cartItems", JSON.stringify([]));
+  //  localStorage.setItem("cartItems", JSON.stringify([]));   // Could be used to empty the cart
     const { items, error, loading } = fetchItems();
     const [ cartItems, setCartItems ] = useState(populateCart());
     const shopName = "Arcane";
 
-    const handleAdd = (e) => {
+    const handleAdd = async (e) => {
         // Get the number of items selected and add the corresponding number to the cart 
         const itemTitle = e.target.parentNode.childNodes[1].textContent;
         const itemPrice = toNumber(e.target.parentNode.childNodes[2].textContent);
@@ -93,32 +93,43 @@ const ShopPage = () => {
         const imgUrl = e.target.parentNode.style.backgroundImage.split("(")[1].slice(1, -2);
 
         if (numberOfItem > 0) {
-            // Check if the item was already in the cart 
-            let temp = [...cartItems];
-            let index = temp.findIndex( item => item.title === itemTitle ); 
+            let temp = [];
+            let found = false;
 
-            if (index >= 0) {
-                temp[index] = { 
-                    ...temp[index], 
-                    nItem: toNumber(temp[index].nItem) + toNumber(numberOfItem),
-                    totalPrice: (temp[index].nItem + numberOfItem) * itemPrice,
-                }
-            } else { 
-                temp = [...temp, 
-                    { 
-                        title: itemTitle,  
-                        image: imgUrl,
-                        price: itemPrice, 
-                        nItem: toNumber(numberOfItem), 
-                        totalPrice: numberOfItem * itemPrice, 
-                    }
-                ];
-            }
+            // Check if the item was already in the cart 
+            cartItems.forEach(item => {
+                if (item.title === itemTitle) {
+                    let updatedCount = toNumber(item.nItem) + toNumber(numberOfItem);
+
+                    temp = [
+                        ...temp, 
+                        {
+                            ...item,
+                            nItem: updatedCount,
+                            totalPrice: updatedCount * itemPrice,
+                        }
+                    ];
+
+                    found = true;
+                } else temp = [...temp, item];
+            });
+
+            if (!found) {
+                    temp = [...temp, 
+                        { 
+                            title: itemTitle,  
+                            image: imgUrl,
+                            price: itemPrice, 
+                            nItem: toNumber(numberOfItem), 
+                            totalPrice: numberOfItem * itemPrice, 
+                        }
+                    ];
+            } 
+
             setCartItems(temp);
-            localStorage.setItem("cartItems", JSON.stringify(cartItems));
-            console.table(cartItems);
-        };
-    }
+            localStorage.setItem("cartItems", JSON.stringify(temp));
+        }
+    };
 
     const handleEdit = (e) => {
         let currentValue = toNumber(e.target.parentNode.parentNode.childNodes[0].value);
