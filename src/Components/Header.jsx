@@ -47,9 +47,6 @@ const Header = () => {
     const navLinks = [
         { label: "Shop", href: "/shop", after: false, },
         { label: "About Us", href: "/", after: true, },
-        { label: "Our Services", href: "/", after: false, },
-        { label: "Store Locator", href: "/", after: false, },
-        { label: "Your Impact", href: "/", after: true, },
     ];
     const utilities = [
         { name: "search", href: "/", },

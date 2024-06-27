@@ -65,7 +65,7 @@ const Cart = () => {
                         {
                             ...item, 
                             nItem: updateCount,
-                            totalPrice: item.price * updateCount, 
+                            totalPrice: (item.price * updateCount).toFixed(2), 
                         }
                     ];
                 }

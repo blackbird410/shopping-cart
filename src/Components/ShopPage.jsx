@@ -80,7 +80,6 @@ export const populateStorage = (key) => {
 }
 
 const ShopPage = () => {
-  //  localStorage.setItem("cartItems", JSON.stringify([]));   // Could be used to empty the cart
     const { items, error, loading } = fetchItems();
     const [ cartItems, setCartItems ] = useState(populateStorage("cartItems"));
     const shopName = "Arcane";
